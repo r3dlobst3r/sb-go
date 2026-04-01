@@ -117,11 +117,12 @@ func CheckArchitecture(ctx context.Context) error {
 
 	arch := strings.TrimSpace(string(result.Combined))
 	x8664regex := regexp.MustCompile(`(x86_64)$`)
+	arm64regex := regexp.MustCompile(`(aarch64|arm64)$`)
 
-	if x8664regex.MatchString(arch) {
+	if x8664regex.MatchString(arch) || arm64regex.MatchString(arch) {
 		return nil // Supported architecture
 	} else {
-		return fmt.Errorf("UNSUPPORTED CPU Architecture - Install cancelled: %s is not supported. Supported: x86_64", arch)
+		return fmt.Errorf("UNSUPPORTED CPU Architecture - Install cancelled: %s is not supported. Supported: x86_64, aarch64, arm64", arch)
 	}
 }
 
