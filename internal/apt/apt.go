@@ -14,6 +14,7 @@ import (
 
 	"github.com/r3dlobst3r/sb-go/internal/executor"
 	"github.com/r3dlobst3r/sb-go/internal/logging"
+	"github.com/r3dlobst3r/sb-go/internal/utils"
 )
 
 // aptLockFile is the primary lock file used by dpkg/apt operations.
@@ -239,6 +240,22 @@ func UpdatePackageLists(ctx context.Context, verbose bool) func() error {
 //
 //goland:noinspection HttpUrlsUsage
 func AddAptRepositories(ctx context.Context, verbose bool) error {
+	// Get the system architecture
+	arch, err := utils.GetArchitecture(ctx)
+	if err != nil {
+		return fmt.Errorf("error getting system architecture: %w", err)
+	}
+	if verbose {
+		fmt.Printf("Detected architecture: %s\n", arch)
+	}
+
+	// Get the correct repository URL based on architecture
+	archiveURL := getArchiveURL(arch)
+	securityURL := getSecurityURL(arch)
+	if verbose {
+		fmt.Printf("Using repository URL: %s\n", archiveURL)
+	}
+
 	// Get the Ubuntu release codename.
 	if verbose {
 		fmt.Println("Detecting Ubuntu release codename...")
@@ -297,10 +314,10 @@ func AddAptRepositories(ctx context.Context, verbose bool) error {
 			fmt.Printf("Configuring repositories for Ubuntu %s\n", release)
 		}
 		repos := []string{
-			"deb http://archive.ubuntu.com/ubuntu/ " + release + " main",
-			"deb http://archive.ubuntu.com/ubuntu/ " + release + " universe",
-			"deb http://archive.ubuntu.com/ubuntu/ " + release + " restricted",
-			"deb http://archive.ubuntu.com/ubuntu/ " + release + " multiverse",
+			"deb " + archiveURL + " " + release + " main",
+			"deb " + archiveURL + " " + release + " universe",
+			"deb " + archiveURL + " " + release + " restricted",
+			"deb " + archiveURL + " " + release + " multiverse",
 		}
 		for _, repo := range repos {
 			if verbose {
@@ -351,7 +368,7 @@ func AddAptRepositories(ctx context.Context, verbose bool) error {
 			archiveSourcesFile := filepath.Join(sourcesDir, "ubuntu-archive.sources")
 
 			// Create DEB822 format content for official Ubuntu archives
-			deb822Content := buildNobleSourcesContent(release)
+			deb822Content := buildNobleSourcesContent(release, archiveURL, securityURL)
 
 			if verbose {
 				fmt.Println("\nWriting ubuntu-archive.sources with content:")
@@ -380,22 +397,42 @@ func AddAptRepositories(ctx context.Context, verbose bool) error {
 	return nil
 }
 
+// getArchiveURL returns the correct Ubuntu archive URL based on architecture.
+// For amd64, it returns http://archive.ubuntu.com/ubuntu/
+// For arm64, it returns http://ports.ubuntu.com/ubuntu-ports/
+func getArchiveURL(arch string) string {
+	if arch == "arm64" {
+		return "http://ports.ubuntu.com/ubuntu-ports/"
+	}
+	return "http://archive.ubuntu.com/ubuntu/"
+}
+
+// getSecurityURL returns the correct Ubuntu security repository URL based on architecture.
+// For amd64, it returns http://security.ubuntu.com/ubuntu/
+// For arm64, it returns http://ports.ubuntu.com/ubuntu-ports/
+func getSecurityURL(arch string) string {
+	if arch == "arm64" {
+		return "http://ports.ubuntu.com/ubuntu-ports/"
+	}
+	return "http://security.ubuntu.com/ubuntu/"
+}
+
 // buildNobleSourcesContent generates DEB822 format content for Noble Ubuntu archives.
 // It returns a properly formatted .sources file content string.
-func buildNobleSourcesContent(release string) string {
+func buildNobleSourcesContent(release, archiveURL, securityURL string) string {
 	return fmt.Sprintf(
 		"Types: deb\n"+
-			"URIs: http://archive.ubuntu.com/ubuntu/\n"+
+			"URIs: %s\n"+
 			"Suites: %s %s-updates %s-backports\n"+
 			"Components: main restricted universe multiverse\n"+
 			"Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg\n"+
 			"\n"+
 			"Types: deb\n"+
-			"URIs: http://security.ubuntu.com/ubuntu/\n"+
+			"URIs: %s\n"+
 			"Suites: %s-security\n"+
 			"Components: main restricted universe multiverse\n"+
 			"Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg\n",
-		release, release, release, release)
+		archiveURL, release, release, release, securityURL, release)
 }
 
 // parseUbuntuSources parses a DEB822 format .sources file and extracts all URIs.
@@ -434,7 +471,7 @@ func parseUbuntuSources(sourcesFile string) ([]string, error) {
 }
 
 // isUsingArchiveMirror checks if the ubuntu.sources file is using official Ubuntu archive mirrors.
-// Returns true if using archive.ubuntu.com or security.ubuntu.com, false for custom mirrors.
+// Returns true if using archive.ubuntu.com, security.ubuntu.com, or ports.ubuntu.com, false for custom mirrors.
 func isUsingArchiveMirror(sourcesFile string) (bool, error) {
 	uris, err := parseUbuntuSources(sourcesFile)
 	if err != nil {
@@ -446,9 +483,9 @@ func isUsingArchiveMirror(sourcesFile string) (bool, error) {
 		return false, nil
 	}
 
-	// Check if any URI uses the official archive endpoints
+	// Check if any URI uses the official archive endpoints (amd64 or arm64)
 	for _, uri := range uris {
-		if strings.Contains(uri, "archive.ubuntu.com") || strings.Contains(uri, "security.ubuntu.com") {
+		if strings.Contains(uri, "archive.ubuntu.com") || strings.Contains(uri, "security.ubuntu.com") || strings.Contains(uri, "ports.ubuntu.com") {
 			return true, nil
 		}
 	}

@@ -100,8 +100,9 @@ func CheckUbuntuSupport() error {
 	return nil
 }
 
-// CheckArchitecture checks if the CPU architecture is supported.
-func CheckArchitecture(ctx context.Context) error {
+// GetArchitecture returns the CPU architecture of the system.
+// Returns "amd64" for x86_64 systems and "arm64" for ARM64 systems.
+func GetArchitecture(ctx context.Context) (string, error) {
 	// Create a context with timeout for the command
 	cmdCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
@@ -111,19 +112,26 @@ func CheckArchitecture(ctx context.Context) error {
 		executor.WithOutputMode(executor.OutputModeCombined),
 	)
 	if err != nil {
-		// Return the error but include the output for debugging.  No longer continuing.
-		return fmt.Errorf("error getting architecture: %v, output: %s", err, strings.TrimSpace(string(result.Combined)))
+		return "", fmt.Errorf("error getting architecture: %v, output: %s", err, strings.TrimSpace(string(result.Combined)))
 	}
 
 	arch := strings.TrimSpace(string(result.Combined))
 	x8664regex := regexp.MustCompile(`(x86_64)$`)
 	arm64regex := regexp.MustCompile(`(aarch64|arm64)$`)
 
-	if x8664regex.MatchString(arch) || arm64regex.MatchString(arch) {
-		return nil // Supported architecture
+	if x8664regex.MatchString(arch) {
+		return "amd64", nil
+	} else if arm64regex.MatchString(arch) {
+		return "arm64", nil
 	} else {
-		return fmt.Errorf("UNSUPPORTED CPU Architecture - Install cancelled: %s is not supported. Supported: x86_64, aarch64, arm64", arch)
+		return "", fmt.Errorf("UNSUPPORTED CPU Architecture: %s is not supported. Supported: x86_64, aarch64, arm64", arch)
 	}
+}
+
+// CheckArchitecture checks if the CPU architecture is supported.
+func CheckArchitecture(ctx context.Context) error {
+	_, err := GetArchitecture(ctx)
+	return err
 }
 
 // CheckLXC checks if the system is running inside an LXC container.
