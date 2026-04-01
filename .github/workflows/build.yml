@@ -20,6 +20,10 @@ jobs:
   build_and_release:
     name: Build and Release
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux]
+        goarch: [amd64, arm64]
     outputs:
       version: ${{ steps.determine_version.outputs.version }}
       git_commit: ${{ steps.get_git_commit.outputs.short_sha }}
@@ -52,8 +56,8 @@ jobs:
         env:
           VERSION: ${{ steps.determine_version.outputs.version }}
           GIT_COMMIT: ${{ steps.get_git_commit.outputs.short_sha }}
-          GOOS: linux
-          GOARCH: amd64
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
           CGO_ENABLED: 0
         run: |
           ldflags="-w -s -X '${GITHUB_REPO}/internal/runtime.Version=${VERSION}' -X '${GITHUB_REPO}/internal/runtime.GitCommit=${GIT_COMMIT}' -X 'github.com/r3dlobst3r/sb-go/internal/runtime.DisableSelfUpdate=false'"
@@ -62,20 +66,21 @@ jobs:
           if [[ "${{ github.ref }}" == refs/tags/* ]]; then
             OUTPUT_NAME="${APP_NAME}_${GOOS}_${GOARCH}"
           else
-            OUTPUT_NAME="${APP_NAME}"
+            OUTPUT_NAME="${APP_NAME}_${GOOS}_${GOARCH}"
           fi
           
           go build -trimpath -ldflags="${ldflags}" -o ${OUTPUT_NAME} .
+          chmod +x ${OUTPUT_NAME}
 
       - name: Upload Artifact
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ env.APP_NAME }}
-          path: ${{ env.APP_NAME }}
+          name: ${{ env.APP_NAME }}_${{ matrix.goos }}_${{ matrix.goarch }}
+          path: ${{ env.APP_NAME }}_${{ matrix.goos }}_${{ matrix.goarch }}
 
       - name: Generate Release Notes
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        if: ${{ startsWith(github.ref, 'refs/tags/') && matrix.goarch == 'amd64' }}
         id: release_notes
         run: |
           # Get the previous tag
@@ -103,7 +108,7 @@ jobs:
           echo "" >> release_notes.md
           echo "**Full Changelog**: https://github.com/r3dlobst3r/sb-go/compare/$PREVIOUS_TAG...${{ steps.determine_version.outputs.version }}" >> release_notes.md
 
-      - name: Create GitHub Release
+      - name: Upload Release Assets
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         uses: softprops/action-gh-release@v2
         env:
@@ -114,10 +119,10 @@ jobs:
           draft: false
           body_path: release_notes.md
           prerelease: false
-          files: ${{ env.APP_NAME }}_linux_amd64
+          files: ${{ env.APP_NAME }}_${{ matrix.goos }}_${{ matrix.goarch }}
 
       - name: Notify Discord
-        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        if: ${{ startsWith(github.ref, 'refs/tags/') && matrix.goarch == 'amd64' }}
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
@@ -148,8 +153,8 @@ jobs:
                 },
                 "fields": [
                   {
-                    "name": "📥 Download",
-                    "value": "[sb_linux_amd64](https://github.com/r3dlobst3r/sb-go/releases/download/${{ steps.determine_version.outputs.version }}/sb_linux_amd64)",
+                    "name": "📥 Downloads",
+                    "value": "[sb_linux_amd64](https://github.com/r3dlobst3r/sb-go/releases/download/${{ steps.determine_version.outputs.version }}/sb_linux_amd64) | [sb_linux_arm64](https://github.com/r3dlobst3r/sb-go/releases/download/${{ steps.determine_version.outputs.version }}/sb_linux_arm64)",
                     "inline": true
                   },
                   {
