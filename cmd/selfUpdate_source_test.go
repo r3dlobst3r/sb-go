@@ -39,8 +39,8 @@ func validSourceReleases() []selfupdate.SourceRelease {
 			Assets: []githubAsset{
 				{
 					ID:                 456,
-					Name:               "sb_linux_amd64",
-					BrowserDownloadURL: "https://example.com/sb_linux_amd64",
+					Name:               "sb_linux_arm64",
+					BrowserDownloadURL: "https://example.com/sb_linux_arm64",
 				},
 			},
 		}),
@@ -49,7 +49,7 @@ func validSourceReleases() []selfupdate.SourceRelease {
 
 func TestSaltboxProxySourceListReleasesUsesProxyWhenUsable(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-		_, _ = w.Write([]byte(`[{"id":1,"tag_name":"v1.0.0","assets":[{"id":2,"name":"sb_linux_amd64","browser_download_url":"https://example.com/sb"}]}]`))
+		_, _ = w.Write([]byte(`[{"id":1,"tag_name":"v1.0.0","assets":[{"id":2,"name":"sb_linux_arm64","browser_download_url":"https://example.com/sb"}]}]`))
 	}))
 	defer server.Close()
 
@@ -152,7 +152,7 @@ func TestReleaseListUsabilityError(t *testing.T) {
 		newSaltboxRelease(githubRelease{
 			TagName: "",
 			Assets: []githubAsset{
-				{Name: "sb_linux_amd64", BrowserDownloadURL: "https://example.com/sb"},
+				{Name: "sb_linux_arm64", BrowserDownloadURL: "https://example.com/sb"},
 			},
 		}),
 	})

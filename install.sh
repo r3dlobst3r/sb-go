@@ -10,7 +10,7 @@ set -euo pipefail
 readonly GITHUB_REPO="r3dlobst3r/sb-go"
 readonly BINARY_NAME="sb"
 readonly INSTALL_PATH="/usr/local/bin/${BINARY_NAME}"
-readonly DOWNLOAD_BINARY_NAME="sb_linux_amd64"
+readonly DOWNLOAD_BINARY_NAME="sb_linux_arm64"
 readonly TEMP_DIR=$(mktemp -d)
 readonly MIN_BINARY_SIZE=1000000  # 1MB minimum size for sanity check
 DOWNLOAD_TOOL=""  # Will be set by check_dependencies
@@ -78,9 +78,9 @@ detect_platform() {
         exit 1
     fi
 
-    if [[ "${arch}" != "x86_64" && "${arch}" != "amd64" ]]; then
+    if [[ "${arch}" != "aarch64" && "${arch}" != "arm64" ]]; then
         log_error "Unsupported architecture: ${arch}"
-        log_error "This installer only supports x86_64/amd64"
+        log_error "This installer only supports aarch64/arm64"
         exit 1
     fi
 
