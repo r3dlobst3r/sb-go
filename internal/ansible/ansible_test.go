@@ -13,8 +13,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/cache"
-	"github.com/saltyorg/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/cache"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
 )
 
 // TestRunAnsiblePlaybook_Success tests successful playbook execution

@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/signals"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/signals"
 
 	"charm.land/bubbles/v2/list"
 	tea "charm.land/bubbletea/v2"

@@ -3,9 +3,9 @@ package motd
 import (
 	"os"
 
-	"github.com/saltyorg/sb-go/internal/config"
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/styles"
+	"github.com/r3dlobst3r/sb-go/internal/config"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/styles"
 
 	"charm.land/lipgloss/v2"
 	"github.com/charmbracelet/x/exp/charmtone"

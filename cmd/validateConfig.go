@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/saltyorg/sb-go/internal/validate"
+	"github.com/r3dlobst3r/sb-go/internal/validate"
 
 	"github.com/spf13/cobra"
 )

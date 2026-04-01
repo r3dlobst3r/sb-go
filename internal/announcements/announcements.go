@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/ansible"
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/spinners"
+	"github.com/r3dlobst3r/sb-go/internal/ansible"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/spinners"
 
 	"charm.land/bubbles/v2/viewport"
 	tea "charm.land/bubbletea/v2"

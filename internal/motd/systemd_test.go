@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/saltyorg/sb-go/internal/systemd"
+	"github.com/r3dlobst3r/sb-go/internal/systemd"
 )
 
 func TestFormatServiceLineShowsScheduledForTimerGatedService(t *testing.T) {

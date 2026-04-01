@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
 )
 
 // ServiceFilter defines a filter for matching systemd service names.

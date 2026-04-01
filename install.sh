@@ -7,7 +7,7 @@
 set -euo pipefail
 
 # Configuration
-readonly GITHUB_REPO="saltyorg/sb-go"
+readonly GITHUB_REPO="r3dlobst3r/sb-go"
 readonly BINARY_NAME="sb"
 readonly INSTALL_PATH="/usr/local/bin/${BINARY_NAME}"
 readonly DOWNLOAD_BINARY_NAME="sb_linux_amd64"

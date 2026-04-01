@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/validate"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/validate"
 )
 
 // sectionOrder defines the order of sections in generated config (alphabetical).

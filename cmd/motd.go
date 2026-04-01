@@ -6,7 +6,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/motd"
+	"github.com/r3dlobst3r/sb-go/internal/motd"
 
 	"github.com/spf13/cobra"
 )

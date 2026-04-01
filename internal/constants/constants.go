@@ -5,14 +5,14 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/paths"
+	"github.com/r3dlobst3r/sb-go/internal/paths"
 )
 
 const (
 	AnsiblePlaybookBinaryPath         = "/usr/local/bin/ansible-playbook"
 	SaltboxGitPath                    = "/srv/git"
 	SaltboxRepoPath                   = "/srv/git/saltbox"
-	SaltboxRepoURL                    = "https://github.com/saltyorg/saltbox.git"
+	SaltboxRepoURL                    = "https://github.com/r3dlobst3r/saltbox.git"
 	SaltboxAccountsConfigPath         = "/srv/git/saltbox/accounts.yml"
 	SaltboxAdvancedSettingsConfigPath = "/srv/git/saltbox/adv_settings.yml"
 	SaltboxBackupConfigPath           = "/srv/git/saltbox/backup_config.yml"

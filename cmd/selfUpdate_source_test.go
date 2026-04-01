@@ -61,7 +61,7 @@ func TestSaltboxProxySourceListReleasesUsesProxyWhenUsable(t *testing.T) {
 		verbose:      true,
 	}
 
-	releases, err := source.ListReleases(context.Background(), selfupdate.ParseSlug("saltyorg/sb-go"))
+	releases, err := source.ListReleases(context.Background(), selfupdate.ParseSlug("r3dlobst3r/sb-go"))
 	if err != nil {
 		t.Fatalf("ListReleases() returned error: %v", err)
 	}
@@ -82,7 +82,7 @@ func TestSaltboxProxySourceListReleasesFallsBackOnProxyError(t *testing.T) {
 		verbose:      true,
 	}
 
-	releases, err := source.ListReleases(context.Background(), selfupdate.ParseSlug("saltyorg/sb-go"))
+	releases, err := source.ListReleases(context.Background(), selfupdate.ParseSlug("r3dlobst3r/sb-go"))
 	if err != nil {
 		t.Fatalf("ListReleases() returned error: %v", err)
 	}
@@ -108,7 +108,7 @@ func TestSaltboxProxySourceListReleasesFallsBackOnUnusableProxyResponse(t *testi
 		verbose:      true,
 	}
 
-	releases, err := source.ListReleases(context.Background(), selfupdate.ParseSlug("saltyorg/sb-go"))
+	releases, err := source.ListReleases(context.Background(), selfupdate.ParseSlug("r3dlobst3r/sb-go"))
 	if err != nil {
 		t.Fatalf("ListReleases() returned error: %v", err)
 	}
@@ -134,7 +134,7 @@ func TestSaltboxProxySourceListReleasesErrorsWhenBothSourcesFail(t *testing.T) {
 		verbose:      true,
 	}
 
-	_, err := source.ListReleases(context.Background(), selfupdate.ParseSlug("saltyorg/sb-go"))
+	_, err := source.ListReleases(context.Background(), selfupdate.ParseSlug("r3dlobst3r/sb-go"))
 	if err == nil {
 		t.Fatal("expected an error when both proxy and fallback fail")
 	}

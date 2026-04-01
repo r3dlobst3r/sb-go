@@ -9,10 +9,10 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/cache"
-	"github.com/saltyorg/sb-go/internal/constants"
-	sbErrors "github.com/saltyorg/sb-go/internal/errors"
-	"github.com/saltyorg/sb-go/internal/git"
+	"github.com/r3dlobst3r/sb-go/internal/cache"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	sbErrors "github.com/r3dlobst3r/sb-go/internal/errors"
+	"github.com/r3dlobst3r/sb-go/internal/git"
 )
 
 // TagParser is a function type that parses output and extracts tags

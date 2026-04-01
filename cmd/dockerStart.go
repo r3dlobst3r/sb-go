@@ -6,8 +6,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/spinners"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/spinners"
 
 	"charm.land/lipgloss/v2"
 	"github.com/spf13/cobra"

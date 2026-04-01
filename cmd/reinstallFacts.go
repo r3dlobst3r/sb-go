@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/saltyorg/sb-go/internal/fact"
-	"github.com/saltyorg/sb-go/internal/spinners"
+	"github.com/r3dlobst3r/sb-go/internal/fact"
+	"github.com/r3dlobst3r/sb-go/internal/spinners"
 
 	"github.com/spf13/cobra"
 )

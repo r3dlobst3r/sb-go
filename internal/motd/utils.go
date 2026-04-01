@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
 )
 
 // ExecCommand executes a command and returns its output as a string

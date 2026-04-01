@@ -12,8 +12,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/executor"
-	"github.com/saltyorg/sb-go/internal/logging"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/logging"
 )
 
 // aptLockFile is the primary lock file used by dpkg/apt operations.

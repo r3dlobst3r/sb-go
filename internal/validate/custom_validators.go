@@ -15,9 +15,9 @@ import (
 	"sync"
 	"time"
 
-	sbconfig "github.com/saltyorg/sb-go/internal/config"
-	"github.com/saltyorg/sb-go/internal/logging"
-	"github.com/saltyorg/sb-go/internal/utils"
+	sbconfig "github.com/r3dlobst3r/sb-go/internal/config"
+	"github.com/r3dlobst3r/sb-go/internal/logging"
+	"github.com/r3dlobst3r/sb-go/internal/utils"
 
 	"github.com/cloudflare/cloudflare-go/v6"
 	"github.com/cloudflare/cloudflare-go/v6/option"

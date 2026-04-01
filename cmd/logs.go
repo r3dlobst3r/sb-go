@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/executor"
-	"github.com/saltyorg/sb-go/internal/signals"
-	"github.com/saltyorg/sb-go/internal/styles"
-	"github.com/saltyorg/sb-go/internal/systemd"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/signals"
+	"github.com/r3dlobst3r/sb-go/internal/styles"
+	"github.com/r3dlobst3r/sb-go/internal/systemd"
 
 	"charm.land/bubbles/v2/help"
 	"charm.land/bubbles/v2/key"

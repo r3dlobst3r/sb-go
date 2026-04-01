@@ -3,7 +3,7 @@ package cmd
 import (
 	"context"
 
-	"github.com/saltyorg/sb-go/internal/errors"
+	"github.com/r3dlobst3r/sb-go/internal/errors"
 
 	"github.com/spf13/cobra"
 )

@@ -11,10 +11,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/executor"
-	"github.com/saltyorg/sb-go/internal/logging"
-	"github.com/saltyorg/sb-go/internal/ubuntu"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/logging"
+	"github.com/r3dlobst3r/sb-go/internal/ubuntu"
 
 	"golang.org/x/sys/unix"
 	"gopkg.in/yaml.v3"

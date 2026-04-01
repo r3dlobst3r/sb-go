@@ -11,9 +11,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/executor"
-	"github.com/saltyorg/sb-go/internal/spinners"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/spinners"
 
 	"github.com/Masterminds/semver/v3"
 )
@@ -269,9 +269,9 @@ func fetchLatestReleaseInfo(proxyURL, githubURL string, verbose bool) (string, i
 
 // DownloadAndInstallSaltboxFact downloads and installs the latest saltbox.fact file.
 func DownloadAndInstallSaltboxFact(alwaysUpdate bool, verbose bool) error {
-	downloadURL := "https://github.com/saltyorg/ansible-facts/releases/latest/download/saltbox-facts"
+	downloadURL := "https://github.com/r3dlobst3r/ansible-facts/releases/latest/download/saltbox-facts"
 	targetPath := "/srv/git/saltbox/ansible_facts.d/saltbox.fact"
-	githubURL := "https://api.github.com/repos/saltyorg/ansible-facts/releases/latest"
+	githubURL := "https://api.github.com/repos/r3dlobst3r/ansible-facts/releases/latest"
 	proxyURL := fmt.Sprintf("%s?url=%s", constants.SVMVersionProxyURL, githubURL)
 
 	// Fetch the latest release info from GitHub with retry logic

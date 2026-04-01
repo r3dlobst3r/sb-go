@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/saltyorg/sb-go/internal/signals"
-	"github.com/saltyorg/sb-go/internal/styles"
-	"github.com/saltyorg/sb-go/internal/tty"
+	"github.com/r3dlobst3r/sb-go/internal/signals"
+	"github.com/r3dlobst3r/sb-go/internal/styles"
+	"github.com/r3dlobst3r/sb-go/internal/tty"
 
 	"charm.land/bubbles/v2/spinner"
 	tea "charm.land/bubbletea/v2"

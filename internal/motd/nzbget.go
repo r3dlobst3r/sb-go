@@ -14,8 +14,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/config"
-	"github.com/saltyorg/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/config"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
 )
 
 // NzbgetInfo holds processed information for an NZBGet instance

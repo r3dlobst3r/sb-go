@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/saltyorg/sb-go/internal/ansible"
-	"github.com/saltyorg/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/ansible"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
 
 	"github.com/spf13/cobra"
 )

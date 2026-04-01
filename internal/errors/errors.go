@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/signals"
+	"github.com/r3dlobst3r/sb-go/internal/signals"
 )
 
 // IsInterruptError checks if an error is due to user interrupt (Ctrl+C).

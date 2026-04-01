@@ -7,11 +7,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/ansible"
-	"github.com/saltyorg/sb-go/internal/cache"
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/logging"
-	"github.com/saltyorg/sb-go/internal/table"
+	"github.com/r3dlobst3r/sb-go/internal/ansible"
+	"github.com/r3dlobst3r/sb-go/internal/cache"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/logging"
+	"github.com/r3dlobst3r/sb-go/internal/table"
 
 	"github.com/agnivade/levenshtein"
 	aquatable "github.com/aquasecurity/table"

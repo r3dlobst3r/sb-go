@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/saltyorg/sb-go/internal/spinners"
+	"github.com/r3dlobst3r/sb-go/internal/spinners"
 )
 
 func TestFetchLatestReleaseInfoFromURL(t *testing.T) {

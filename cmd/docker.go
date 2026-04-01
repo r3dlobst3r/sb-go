@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
 
 	"charm.land/lipgloss/v2"
 	"github.com/spf13/cobra"

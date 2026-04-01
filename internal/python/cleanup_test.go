@@ -4,7 +4,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/saltyorg/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
 )
 
 // TestDeadsnakesPackages tests that the correct package list is generated

@@ -4,7 +4,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/saltyorg/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
 )
 
 // CommandExecutor is an interface for executing commands

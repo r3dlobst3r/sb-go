@@ -1,4 +1,4 @@
-module github.com/saltyorg/sb-go
+module github.com/r3dlobst3r/sb-go
 
 go 1.26.1
 

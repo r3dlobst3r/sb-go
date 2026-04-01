@@ -4,7 +4,7 @@
 # Variables
 BINARY_NAME := sb
 BUILD_DIR := build
-MODULE := github.com/saltyorg/sb-go
+MODULE := github.com/r3dlobst3r/sb-go
 VERSION ?= 0.0.0-dev
 GIT_COMMIT ?= $(shell git rev-parse --short HEAD 2>/dev/null || echo "dev")
 DISABLE_SELF_UPDATE := true

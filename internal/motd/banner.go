@@ -11,7 +11,7 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/saltyorg/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
 )
 
 // AvailableBannerTypes contains all valid box types for the boxes command

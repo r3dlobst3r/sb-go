@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/logging"
+	"github.com/r3dlobst3r/sb-go/internal/logging"
 
 	"github.com/go-playground/validator/v10"
 )

@@ -6,12 +6,12 @@ import (
 	"os"
 	"slices"
 
-	"github.com/saltyorg/sb-go/internal/apt"
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/spinners"
-	"github.com/saltyorg/sb-go/internal/utils"
-	"github.com/saltyorg/sb-go/internal/uv"
-	"github.com/saltyorg/sb-go/internal/venv"
+	"github.com/r3dlobst3r/sb-go/internal/apt"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/spinners"
+	"github.com/r3dlobst3r/sb-go/internal/utils"
+	"github.com/r3dlobst3r/sb-go/internal/uv"
+	"github.com/r3dlobst3r/sb-go/internal/venv"
 
 	"github.com/spf13/cobra"
 )

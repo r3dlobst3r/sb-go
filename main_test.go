@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/signals"
+	"github.com/r3dlobst3r/sb-go/internal/signals"
 )
 
 func TestMainPackageStructure(t *testing.T) {

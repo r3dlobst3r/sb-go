@@ -8,11 +8,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/apt"
-	"github.com/saltyorg/sb-go/internal/constants"
-	"github.com/saltyorg/sb-go/internal/executor"
-	"github.com/saltyorg/sb-go/internal/spinners"
-	"github.com/saltyorg/sb-go/internal/uv"
+	"github.com/r3dlobst3r/sb-go/internal/apt"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/spinners"
+	"github.com/r3dlobst3r/sb-go/internal/uv"
 )
 
 // ManageAnsibleVenv manages the Ansible virtual environment.

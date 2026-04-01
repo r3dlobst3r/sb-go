@@ -7,9 +7,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/saltyorg/sb-go/internal/executor"
-	"github.com/saltyorg/sb-go/internal/spinners"
-	"github.com/saltyorg/sb-go/internal/tty"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/spinners"
+	"github.com/r3dlobst3r/sb-go/internal/tty"
 )
 
 // CloneRepository clones a Git repository to a specified path and branch.

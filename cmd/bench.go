@@ -8,8 +8,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/errors"
-	"github.com/saltyorg/sb-go/internal/executor"
+	"github.com/r3dlobst3r/sb-go/internal/errors"
+	"github.com/r3dlobst3r/sb-go/internal/executor"
 
 	"github.com/spf13/cobra"
 )

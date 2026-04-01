@@ -8,10 +8,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/saltyorg/sb-go/cmd"
-	"github.com/saltyorg/sb-go/internal/signals"
-	"github.com/saltyorg/sb-go/internal/ubuntu"
-	"github.com/saltyorg/sb-go/internal/utils"
+	"github.com/r3dlobst3r/sb-go/cmd"
+	"github.com/r3dlobst3r/sb-go/internal/signals"
+	"github.com/r3dlobst3r/sb-go/internal/ubuntu"
+	"github.com/r3dlobst3r/sb-go/internal/utils"
 
 	"charm.land/lipgloss/v2"
 	"github.com/charmbracelet/colorprofile"

@@ -13,8 +13,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/saltyorg/sb-go/internal/config"
-	"github.com/saltyorg/sb-go/internal/constants"
+	"github.com/r3dlobst3r/sb-go/internal/config"
+	"github.com/r3dlobst3r/sb-go/internal/constants"
 )
 
 // PlexStreamInfo contains information about Plex streams
