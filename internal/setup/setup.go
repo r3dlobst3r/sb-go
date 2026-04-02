@@ -244,7 +244,7 @@ func PythonVenv(ctx context.Context, verbose bool) error {
 	return nil
 }
 
-// SaltboxRepo checks out the master branch of the Saltbox GitHub repository.
+// SaltboxRepo checks out the arm-support branch of the Saltbox GitHub repository.
 // Resets the existing git repository folder if present.
 // Runs submodule update.
 // The context parameter allows for cancellation of long-running operations.
@@ -252,7 +252,7 @@ func SaltboxRepo(ctx context.Context, verbose bool, branch string) error {
 	saltboxPath := constants.SaltboxRepoPath
 	saltboxRepoURL := constants.SaltboxRepoURL
 	if branch == "" {
-		branch = "master" // Default to master if not specified
+		branch = "arm-support" // Default to arm-support if not specified
 	}
 
 	// Check if the Saltbox directory exists.
