@@ -217,7 +217,7 @@ func updateSaltbox(ctx context.Context, verbose bool, branchReset *bool) error {
 	}
 
 	// Fetch and reset git repo - this function already has internal spinners
-	if err := git.FetchAndReset(ctx, constants.SaltboxRepoPath, "master", saltboxUser, nil, branchReset, "Saltbox"); err != nil {
+	if err := git.FetchAndReset(ctx, constants.SaltboxRepoPath, "arm-support", saltboxUser, nil, branchReset, "Saltbox"); err != nil {
 		return fmt.Errorf("error fetching and resetting git: %w", err)
 	}
 
@@ -283,7 +283,7 @@ func updateSandbox(ctx context.Context, branchReset *bool) error {
 	}
 
 	// Fetch and reset git repo - this function already has internal spinners
-	if err := git.FetchAndReset(ctx, constants.SandboxRepoPath, "master", saltboxUser, nil, branchReset, "Sandbox"); err != nil {
+	if err := git.FetchAndReset(ctx, constants.SandboxRepoPath, "arm-support", saltboxUser, nil, branchReset, "Sandbox"); err != nil {
 		return fmt.Errorf("error fetching and resetting git: %w", err)
 	}
 
